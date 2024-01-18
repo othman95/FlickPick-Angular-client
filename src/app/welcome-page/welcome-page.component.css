@@ -1,0 +1,15 @@
+.main-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.main-page h1 {
+  margin-top: 20px;
+}
+
+.main-page button {
+  margin: 5px;
+}
