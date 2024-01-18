@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "myFlix-Angular-client": {
+    "FlickPick-Angular-client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/my-flix-angular-client",
+            "outputPath": "dist/FlickPick-Angular-client",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "myFlix-Angular-client:build:production"
+              "buildTarget": "FlickPick-Angular-client:build:production"
             },
             "development": {
-              "buildTarget": "myFlix-Angular-client:build:development"
+              "buildTarget": "FlickPick-Angular-client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "myFlix-Angular-client:build"
+            "buildTarget": "FlickPick-Angular-client:build"
           }
         },
         "test": {
