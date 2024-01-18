@@ -2,22 +2,21 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router'; // Import Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
-  styleUrls: ['./user-login-form.component.scss']
+  styleUrls: ['./user-login-form.component.css']
 })
 export class UserLoginFormComponent implements OnInit {
-
   @Input() userData = { Name: '', Password: '' };
 
   constructor(
       public fetchApiData: FetchApiDataService,
       public dialogRef: MatDialogRef<UserLoginFormComponent>,
       public snackBar: MatSnackBar,
-      public router: Router) { }
+      private router: Router) { }
 
   ngOnInit(): void {}
 
@@ -27,6 +26,7 @@ export class UserLoginFormComponent implements OnInit {
       Name: this.userData.Name,
       Password: this.userData.Password
     };
+
     // Pass the credentials object to userLogin
     this.fetchApiData.userLogin(credentials).subscribe({
       next: (result) => {
@@ -34,11 +34,13 @@ export class UserLoginFormComponent implements OnInit {
         localStorage.setItem('token', result.token);
 
         // Display a success message
-      this.snackBar.open('Login successful', 'OK', {
-        duration: 2000,
-      });
+        this.snackBar.open('Login successful', 'OK', {
+          duration: 2000,
+        });
 
         this.dialogRef.close(); // Close the modal on success
+
+        // Navigate to the 'movies' route
         this.router.navigate(['movies']);
       },
       error: (error) => {
