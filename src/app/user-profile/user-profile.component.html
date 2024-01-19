@@ -1,3 +1,4 @@
+<!-- user-profile.component.html -->
 <mat-card class="form-wrapper">
   <mat-card-content class="form">
     <!-- Form for updating user information -->
@@ -24,4 +25,16 @@
     <!-- Submit Button -->
     <button mat-raised-button color="primary" (click)="handleSubmit()">Submit</button>
   </mat-card-content>
+
+  <!-- Favorite Movies Section -->
+  <div *ngIf="favoriteMovies.length">
+    <h3>{{ user.Name }}'s Favorite Movies</h3>
+    <div *ngFor="let movie of favoriteMovies">
+      <img [src]="movie.ImagePath" alt="{{ movie.Title }}"> <!-- Image tag -->
+      <p>{{ movie.Title }} ({{ movie.Director.Name }}) - {{ movie.Year }}</p>
+      <p>Genre: {{ movie.Genre.Name }}</p>
+      <button (click)="removeFavoriteMovie(movie._id)" mat-raised-button color="primary">Unfavorite</button>
+    </div>
+  </div>
+
 </mat-card>

@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
 
+// Define the User type
 type User = {
   _id?: string;
   Name: string;
@@ -12,6 +13,20 @@ type User = {
   FavoriteMovies?: string[];
 };
 
+// Define the Movie type
+type Movie = {
+  _id: string;
+  Title: string;
+  Director: {
+    Name: string;
+  };
+  Genre: {
+    Name: string;
+  };
+  Year: number;
+  ImagePath: string;
+};
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -19,6 +34,7 @@ type User = {
 })
 export class UserProfileComponent implements OnInit {
   user: User = { Name: '', Email: '', Password: '', Birthday: new Date(), FavoriteMovies: [] };
+  favoriteMovies: Movie[] = []; // Array of Movie objects
 
   constructor(
     public router: Router,
@@ -27,8 +43,9 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Load user profile on component initiation
+    // Load user profile and favorite movies on component initiation
     this.loadUserProfile();
+    this.loadFavoriteMovies();
   }
 
   loadUserProfile(): void {
@@ -45,29 +62,17 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateUser(): void {
-    // Update user information using fetch
-    const token = localStorage.getItem('token');
-    fetch(`https://flickpick-1911bf3985c5.herokuapp.com/users/${this.user.Name}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify(this.user)
-    })
-    .then(response => response.json())
-    .then(updatedUser => {
-      if (updatedUser) {
+    // Update user information using the FetchApiDataService
+    this.fetchApiData.editUser(this.user.Name, this.user).subscribe({
+      next: (updatedUser) => {
         this.snackBar.open('Update successful', 'OK', { duration: 2000 });
         localStorage.setItem('user', JSON.stringify(updatedUser));
-        this.loadUserProfile(); // Reload the user profile to reflect the updates
-      } else {
-        this.snackBar.open('Update failed', 'OK', { duration: 2000 });
+        this.loadUserProfile(); // Reload the user profile
+      },
+      error: (error) => {
+        console.error('Error updating user:', error);
+        this.snackBar.open('Update error', 'OK', { duration: 2000 });
       }
-    })
-    .catch(error => {
-      console.error('Error updating user:', error);
-      this.snackBar.open('Update error', 'OK', { duration: 2000 });
     });
   }
 
@@ -75,5 +80,30 @@ export class UserProfileComponent implements OnInit {
     // Call updateUser method when form is submitted
     this.updateUser();
   }
-}
 
+  // Load favorite movies for the user
+  loadFavoriteMovies(): void {
+    this.fetchApiData.getAllMovies().subscribe((movies: Movie[]) => {
+      this.favoriteMovies = movies.filter(movie =>
+        this.user.FavoriteMovies?.includes(movie._id));
+    });
+  }
+
+  // Remove a movie from the user's favorite list
+  removeFavoriteMovie(movieId: string): void {
+    // Assuming you have the user's username
+    const username = this.user.Name;
+
+    this.fetchApiData.deleteFavoriteMovie(username, movieId).subscribe({
+      next: (response: any) => {
+        // Update your component's state to reflect the removal
+        this.favoriteMovies = this.favoriteMovies.filter(movie => movie._id !== movieId);
+        console.log('Movie removed from favorites:', response);
+      },
+      error: (error: any) => {
+        // Handle any errors here
+        console.error('Error removing movie from favorites:', error);
+      }
+    });
+  }
+}
