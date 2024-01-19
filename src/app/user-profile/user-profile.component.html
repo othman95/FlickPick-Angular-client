@@ -1,0 +1,27 @@
+<mat-card class="form-wrapper">
+  <mat-card-content class="form">
+    <!-- Form for updating user information -->
+    <mat-form-field class="form-item" appearance="fill">
+      <!-- Username Field -->
+      <input matInput [(ngModel)]="user.Name" placeholder="New Username" name="username" required>
+    </mat-form-field>
+
+    <mat-form-field class="form-item" appearance="fill">
+      <!-- Password Field -->
+      <input matInput [(ngModel)]="user.Password" placeholder="New Password" type="password" name="password" required>
+    </mat-form-field>
+
+    <mat-form-field class="form-item" appearance="fill">
+      <!-- Email Field -->
+      <input matInput [(ngModel)]="user.Email" placeholder="New Email" type="email" name="email" required>
+    </mat-form-field>
+
+    <mat-form-field class="form-item" appearance="fill">
+      <!-- Email Field -->
+      <input matInput [(ngModel)]="user.Birthday" type="Date" name="birthday" required>
+    </mat-form-field>
+
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" (click)="handleSubmit()">Submit</button>
+  </mat-card-content>
+</mat-card>
