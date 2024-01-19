@@ -33,8 +33,10 @@
       <img [src]="movie.ImagePath" alt="{{ movie.Title }}"> <!-- Image tag -->
       <p>{{ movie.Title }} ({{ movie.Director.Name }}) - {{ movie.Year }}</p>
       <p>Genre: {{ movie.Genre.Name }}</p>
-      <button (click)="removeFavoriteMovie(movie._id)" mat-raised-button color="primary">Unfavorite</button>
+      <!-- Favorite Icon -->
+      <mat-icon (click)="toggleFavorite(movie)" [style.color]="isFavorite(movie) ? 'red' : 'white'">
+        favorite
+      </mat-icon>
     </div>
   </div>
-
 </mat-card>

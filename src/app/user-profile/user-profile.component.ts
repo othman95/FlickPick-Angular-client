@@ -40,7 +40,7 @@ export class UserProfileComponent implements OnInit {
     public router: Router,
     public snackBar: MatSnackBar,
     public fetchApiData: FetchApiDataService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Load user profile and favorite movies on component initiation
@@ -89,6 +89,22 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  // Check if a movie is in the user's favorites
+  isFavorite(movie: Movie): boolean {
+    return this.user.FavoriteMovies?.includes(movie._id) ?? false;
+  }
+
+  // Toggle the favorite status of a movie
+  toggleFavorite(movie: Movie): void {
+    if (this.isFavorite(movie)) {
+      // Remove from favorites
+      this.removeFavoriteMovie(movie._id);
+    } else {
+      // Add to favorites (implementation needed)
+      this.addFavoriteMovie(movie._id);
+    }
+  }
+
   // Remove a movie from the user's favorite list
   removeFavoriteMovie(movieId: string): void {
     // Assuming you have the user's username
@@ -103,6 +119,22 @@ export class UserProfileComponent implements OnInit {
       error: (error: any) => {
         // Handle any errors here
         console.error('Error removing movie from favorites:', error);
+      }
+    });
+  }
+
+  // Add a movie to the user's favorite list
+  addFavoriteMovie(movieId: string): void {
+    const userName = this.user.Name;
+
+    this.fetchApiData.addFavoriteMovie(userName, movieId).subscribe({
+      next: (response: any) => {
+        // Update the local favoriteMovies array to include the new favorite
+        this.favoriteMovies.push(response);
+        console.log('Movie added to favorites:', response);
+      },
+      error: (error: any) => {
+        console.error('Error adding movie to favorites:', error);
       }
     });
   }

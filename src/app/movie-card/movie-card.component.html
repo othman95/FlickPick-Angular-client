@@ -13,9 +13,12 @@
         Director
       </button>
       <button mat-button color="primary">
-        Synopsis
+        Actors
       </button>
-      <mat-icon>favorite_border</mat-icon>
+      <!-- Favorite Icon -->
+      <mat-icon (click)="toggleFavorite(movie)" [style.color]="isFavorite(movie) ? 'red' : 'white'">
+        favorite
+      </mat-icon>
     </mat-card-actions>
   </mat-card>
 </div>
