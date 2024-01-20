@@ -7,17 +7,10 @@
       </mat-card-header>
       <img src={{movie.ImagePath}} alt={{movie.Title}} />
       <mat-card-actions>
-        <button mat-button color="primary">
-          Genre
-        </button>
-        <button mat-button color="primary">
-          Director
-        </button>
-        <button mat-button color="primary">
-          Actors
-        </button>
-        <!-- Favorite Icon -->
-        <mat-icon (click)="toggleFavorite(movie)" [style.color]="isFavorite(movie) ? 'red' : 'white'">
+        <a href="#" class="card-link">Genre</a>
+        <a href="#" class="card-link">Director</a>
+        <a href="#" class="card-link">Actors</a>
+        <mat-icon (click)="toggleFavorite(movie)" [style.color]="isFavorite(movie) ? '#e50914' : 'white'">
           favorite
         </mat-icon>
       </mat-card-actions>
