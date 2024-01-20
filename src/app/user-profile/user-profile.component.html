@@ -1,42 +1,62 @@
-<!-- user-profile.component.html -->
-<mat-card class="form-wrapper">
-  <mat-card-content class="form">
-    <!-- Form for updating user information -->
-    <mat-form-field class="form-item" appearance="fill">
-      <!-- Username Field -->
-      <input matInput [(ngModel)]="user.Name" placeholder="New Username" name="username" required>
-    </mat-form-field>
+<div class="content-wrapper">
+  <div class="info-and-form-container">
+    <!-- User Info Card -->
+    <mat-card class="user-info-card">
+      <h2>Your Info</h2>
+      <p><strong>Name:</strong> {{ user.Name }}</p>
+      <p><strong>Email:</strong> {{ user.Email }}</p>
+    </mat-card>
 
-    <mat-form-field class="form-item" appearance="fill">
-      <!-- Password Field -->
-      <input matInput [(ngModel)]="user.Password" placeholder="New Password" type="password" name="password" required>
-    </mat-form-field>
+    <!-- Form for Updating User Information -->
+    <mat-card class="form-wrapper">
+      <mat-card-content class="form">
+        <h2>Update Information</h2>
+        <!-- Form fields... -->
+        <mat-form-field class="form-item" appearance="fill">
+          <input matInput [(ngModel)]="user.Name" placeholder="New Username" name="username" required>
+        </mat-form-field>
 
-    <mat-form-field class="form-item" appearance="fill">
-      <!-- Email Field -->
-      <input matInput [(ngModel)]="user.Email" placeholder="New Email" type="email" name="email" required>
-    </mat-form-field>
+        <!-- Password Field -->
+        <mat-form-field class="form-item" appearance="fill">
+          <input matInput [(ngModel)]="user.Password" placeholder="New Password" type="password" name="password"
+            required>
+        </mat-form-field>
 
-    <mat-form-field class="form-item" appearance="fill">
-      <!-- Email Field -->
-      <input matInput [(ngModel)]="user.Birthday" type="Date" name="birthday" required>
-    </mat-form-field>
+        <!-- Email Field -->
+        <mat-form-field class="form-item" appearance="fill">
+          <input matInput [(ngModel)]="user.Email" placeholder="New Email" type="email" name="email" required>
+        </mat-form-field>
 
-    <!-- Submit Button -->
-    <button mat-raised-button color="primary" (click)="handleSubmit()">Submit</button>
-  </mat-card-content>
+        <!-- Birthday Field -->
+        <mat-form-field class="form-item" appearance="fill">
+          <input matInput [(ngModel)]="user.Birthday" type="Date" name="birthday" required>
+        </mat-form-field>
 
-  <!-- Favorite Movies Section -->
-  <div *ngIf="favoriteMovies.length">
-    <h3>{{ user.Name }}'s Favorite Movies</h3>
-    <div *ngFor="let movie of favoriteMovies">
-      <img [src]="movie.ImagePath" alt="{{ movie.Title }}"> <!-- Image tag -->
-      <p>{{ movie.Title }} ({{ movie.Director.Name }}) - {{ movie.Year }}</p>
-      <p>Genre: {{ movie.Genre.Name }}</p>
-      <!-- Favorite Icon -->
-      <mat-icon (click)="toggleFavorite(movie)" [style.color]="isFavorite(movie) ? 'red' : 'white'">
-        favorite
-      </mat-icon>
+        <!-- Submit Button -->
+        <button mat-raised-button color="primary" (click)="handleSubmit()">Submit</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="form-wrapper">
+    <h2 class="movies-header">Favorite Movies</h2>
+    <!-- Movies Section including header -->
+    <div class="movies-grid">
+      <!-- Favorite Movies Content -->
+      <div *ngFor="let movie of favoriteMovies" class="movie-card">
+        <mat-card>
+          <img [src]="movie.ImagePath" alt="{{ movie.Title }}" class="movie-image">
+          <mat-card-content>
+            <p>{{ movie.Title }} ({{ movie.Director.Name }}) - {{ movie.Year }}</p>
+            <p>Genre: {{ movie.Genre.Name }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <mat-icon (click)="toggleFavorite(movie)" [style.color]="isFavorite(movie) ? 'red' : 'white'">
+              favorite
+            </mat-icon>
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </div>
   </div>
-</mat-card>
+</div>

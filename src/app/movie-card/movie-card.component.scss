@@ -1,0 +1,32 @@
+.movie-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.movie-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* Align cards from left to right */
+  align-items: flex-start;
+  /* Align cards from top to bottom */
+}
+
+/* Define styles for the custom card */
+.custom-card {
+  flex: 1 1 calc(25% - 20px);
+  /* Four cards per row, equal width */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Black with increased opacity */
+  color: white;
+  margin: 10px;
+  border: 2px solid white;
+  /* White border for the card */
+  transition: background-color 0.3s;
+  /* Smooth transition for background color change */
+}
+
+/* Remove movie title and subtitle styles */
+.custom-card mat-card-header {
+  display: none;
+}

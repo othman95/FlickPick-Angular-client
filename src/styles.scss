@@ -1,0 +1,72 @@
+// Define color variables
+$flickpick: #e50914;
+$black: black;
+$white: white;
+
+/* Set the background color for the entire app */
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100%;
+  background-color: $black;
+  color: $white;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* User Info and Form Container */
+  .info-and-form-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* User Info Card */
+  .user-info-card {
+    background-color: $black;
+    flex: 1;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    padding: 30px; // Spacing between cards
+  }
+
+  /* Form Wrapper */
+  .form-wrapper {
+    background-color: $black;
+    flex: 1;
+  }
+
+  /* Form Field Styling */
+  .form-item {
+    width: 100%; // Full width
+  }
+
+  // Style the button
+  .mat-raised-button {
+    background-color: mat-color($flickpick);
+    color: mat-color($white, text);
+  }
+}
+
+/* Favorite Movies Grid */
+.movies-grid {
+  color: $black;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  width: 100%;
+
+  /* Responsive Design for Movies Grid */
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+}

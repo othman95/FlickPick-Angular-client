@@ -1,0 +1,57 @@
+/* Content Wrapper */
+.content-wrapper {
+  margin: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Align items to the left */
+}
+
+/* User Info and Form Container */
+.info-and-form-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* User Info Card */
+.user-info-card {
+  flex: 1;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  padding: 30px;
+  /* Spacing between cards */
+}
+
+/* Form Field Styling */
+.form-item {
+  width: 100%;
+  /* Full width */
+}
+
+/* Header for Favorite Movies */
+.content-wrapper h2 {
+  align-self: flex-start;
+  /* Align the header to the left */
+  margin-left: 10px;
+  /* Add margin for spacing */
+}
+
+/* Movies Section including header */
+.movies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow movies to wrap to the next row */
+  justify-content: flex-start;
+  /* Start movies from the left */
+  align-items: flex-start;
+  /* Align movies to the left within each row */
+  width: 100%;
+}
+
+/* Movie Card Styles */
+.movie-card {
+  flex: 1 1 calc(25% - 20px);
+  /* Four cards per row, with margins */
+  margin: 10px;
+}

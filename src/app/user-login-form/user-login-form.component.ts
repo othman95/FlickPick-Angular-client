@@ -7,18 +7,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
-  styleUrls: ['./user-login-form.component.css']
+  styleUrls: ['./user-login-form.component.scss']
 })
 export class UserLoginFormComponent implements OnInit {
   @Input() userData = { Name: '', Password: '' };
 
   constructor(
-      public fetchApiData: FetchApiDataService,
-      public dialogRef: MatDialogRef<UserLoginFormComponent>,
-      public snackBar: MatSnackBar,
-      private router: Router) { }
+    public fetchApiData: FetchApiDataService,
+    public dialogRef: MatDialogRef<UserLoginFormComponent>,
+    public snackBar: MatSnackBar,
+    private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   loginUser(): void {
     console.log('Login');
