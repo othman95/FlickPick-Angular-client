@@ -12,6 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MovieCardComponent,
     WelcomePageComponent,
     UserProfileComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    MatToolbarModule,
     AppRoutingModule,
     MatIconModule
   ],

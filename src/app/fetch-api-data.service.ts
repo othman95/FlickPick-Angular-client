@@ -28,6 +28,13 @@ export class FetchApiDataService {
     );
   }
 
+  // User logout
+  public logout(): Observable<any> {
+    return this.http.post(apiUrl + 'logout', {}).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // Get all movies
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
@@ -160,7 +167,7 @@ export class FetchApiDataService {
 
   // Non-typed response extraction
   private extractResponseData(res: Object): any {
-    return res || { };
+    return res || {};
   }
 
   // Error handling method

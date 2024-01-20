@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <span class="brand">FlickPick</span>
+
+  <!-- Spacer to push links to the right -->
+  <span class="spacer"></span>
+
+  <!-- Conditional Links for Welcome Page -->
+  <div *ngIf="isWelcomePage" class="nav-links">
+    <a mat-button class="nav-link" (click)="openUserLoginDialog()">Login</a>
+    <a mat-button class="nav-link" (click)="openUserRegistrationDialog()">Sign Up</a>
+  </div>
+
+  <!-- Links for Other Pages -->
+  <div *ngIf="!isWelcomePage" class="nav-links">
+    <a mat-button class="nav-link" routerLink="/movies">Movies</a>
+    <a mat-button class="nav-link" routerLink="/profile">Profile</a>
+    <a mat-button class="nav-link" (click)="logout()">Logout</a>
+  </div>
+</mat-toolbar>

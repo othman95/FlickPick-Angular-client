@@ -1,0 +1,33 @@
+/* Customization for the navbar */
+mat-toolbar {
+  background-color: black;
+  color: #6d757d;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.brand {
+  color: #e50914;
+  font-size: 40px;
+}
+
+.nav-link {
+  color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  /* Changes cursor on hover */
+  text-decoration: none;
+  transition: color 0.3s;
+  /* Smooth transition for color change */
+}
+
+.nav-link:hover {
+  color: lighten(#6d757d, 30%);
+  /* Lighter shade on hover */
+}
