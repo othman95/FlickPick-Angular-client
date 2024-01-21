@@ -1,8 +1,19 @@
+@import '../../_variables.scss';
+
 /* User Info and Form Container */
 .info-and-form-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.custom-submit-button {
+  background-color: $flickpick;
+  color: $white;
+
+  &:hover {
+    background-color: darken($flickpick, 10%);
+  }
 }
 
 /* User Info Card */

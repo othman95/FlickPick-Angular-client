@@ -1,0 +1,60 @@
+// user-registration-form.component.scss
+
+@import '../../_variables.scss';
+
+mat-card {
+  background-color: $white;
+  color: $black;
+
+  mat-card-header {
+    background-color: $flickpick;
+    color: $white;
+    padding: 10px;
+  }
+
+  mat-card-title {
+    font-size: 1.5em;
+  }
+
+  mat-card-content {
+    padding: 20px;
+
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 15px;
+
+      input {
+        color: $black;
+      }
+
+      ::ng-deep .mat-form-field-underline,
+      .mat-form-field-ripple {
+        background-color: $flickpick;
+      }
+
+      ::ng-deep .mat-form-field-label {
+        color: $black;
+      }
+
+      ::ng-deep .mat-input-element {
+        color: $black;
+      }
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+
+    button {
+      background-color: $flickpick;
+      color: $white;
+      margin-top: 10px;
+
+      &:hover {
+        background-color: darken($flickpick, 10%);
+      }
+    }
+  }
+}
