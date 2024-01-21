@@ -1,18 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MovieDetailsDialogComponent } from '../movie-details-dialog/movie-details-dialog.component';
 
 type Movie = {
   _id: string;
   Title: string;
+  Description: string;
   Director: {
     Name: string;
+    Bio: string;
+    BirthYear: number;
+    DeathYear: number | null;
+    Movies: string[];
   };
   Genre: {
     Name: string;
+    Description: string;
   };
   Year: number;
   ImagePath: string;
+  Featured: boolean;
 };
+
 
 type User = {
   _id?: string;
@@ -29,7 +39,10 @@ export class MovieCardComponent implements OnInit {
   movies: Movie[] = [];
   user?: User; // User is optional
 
-  constructor(private fetchApiData: FetchApiDataService) { }
+  constructor(
+    private fetchApiData: FetchApiDataService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.getMovies();
@@ -44,6 +57,13 @@ export class MovieCardComponent implements OnInit {
 
   getUser(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
+  }
+
+  openDetailsDialog(type: string, movie: Movie): void {
+    this.dialog.open(MovieDetailsDialogComponent, {
+      width: '500px',
+      data: { type: type, movie: movie }
+    });
   }
 
   isFavorite(movie: Movie): boolean {

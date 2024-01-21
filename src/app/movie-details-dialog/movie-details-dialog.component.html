@@ -1,0 +1,26 @@
+<!-- movie-details-dialog.component.html -->
+<div class="dialog-content" *ngIf="details">
+  <ng-container *ngIf="data.type === 'director'">
+    <!-- Template for Director Details -->
+    <h1>{{ details?.Name }}</h1>
+    <p><strong>Bio:</strong> {{ details?.Bio }}</p>
+    <p *ngIf="details?.BirthYear"><strong>Birth Year:</strong> {{ details?.BirthYear }}</p>
+    <p *ngIf="details?.DeathYear"><strong>Death Year:</strong> {{ details?.DeathYear }}</p>
+    <!-- ... other director details ... -->
+  </ng-container>
+
+  <ng-container *ngIf="data.type === 'genre'">
+    <!-- Template for Genre Details -->
+    <h1>{{ details?.Name }}</h1>
+    <p>{{ details?.Description }}</p>
+    <!-- ... other genre details ... -->
+  </ng-container>
+
+  <ng-container *ngIf="data.type === 'synopsis'">
+    <!-- Template for Synopsis -->
+    <h1>{{ details?.Title }}</h1>
+    <p>{{ details?.Description }}</p>
+  </ng-container>
+
+  <button class="dialog-button" (click)="onNoClick()">Close</button>
+</div>

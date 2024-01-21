@@ -1,0 +1,42 @@
+// movie-details-dialog.component.scss
+
+@import '../../_variables.scss';
+
+.dialog-content {
+  background-color: $white;
+  color: $black;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 15px;
+
+  h1 {
+    color: $flickpick;
+    margin-bottom: 20px;
+  }
+
+  p,
+  li {
+    line-height: 1.8;
+    margin-bottom: 15px;
+  }
+
+  ul {
+    padding-left: 30px;
+  }
+
+  .dialog-button {
+    background-color: $flickpick;
+    color: $white;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 25px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($flickpick, 10%);
+    }
+  }
+}
